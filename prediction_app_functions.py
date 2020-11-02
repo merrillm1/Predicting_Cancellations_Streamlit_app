@@ -34,3 +34,36 @@ def timeseries_frequency_plot(title, df, df2, timeseries_col, y_col, dStart, dEn
     plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
     
     plt.show()
+    
+
+def cancellations_bar(title, df):
+
+	# Percent of canceled bookings by market segment
+	canceled_pct = round(100*df['is_canceled'].value_counts(normalize = True, sort = False)\
+                                                        .sort_index(), 2)
+                                                        
+	# set axis labels for market_segment options
+	labels = list(canceled_pct.index)
+	x = np.arange(len(labels))
+	width = 0.5
+	plt.style.use('fivethirtyeight')
+	y = [canceled_pct[0], canceled_pct[1]]
+
+	# Create bar chart
+	fig, ax = plt.subplots(figsize=(12, 4)) 
+	ax.barh(1, canceled_pct[1:2], width, color='red', label = 'canceled')
+	ax.barh(0, canceled_pct[:1], width, color='seagreen', label = 'not canceled')
+
+	# Add some text for labels, title and custom x-axis tick labels, etc.
+	ax.set_xlabel('Percent of canceled/not canceled bookings')
+	ax.set_title(title)
+	ax.set_yticks(x)
+	ax.set_yticklabels(x)
+	ax.legend(fontsize=12)
+
+	for i, v in enumerate(y):
+		ax.text(v+0.5, i, str(v) + '%', color='blue', fontweight='bold', fontsize=12)
+
+	fig.tight_layout()
+
+	plt.show()
