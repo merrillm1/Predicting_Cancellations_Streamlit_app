@@ -135,5 +135,6 @@ if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
 	st.pyplot(filtered_plot)
 	st.write("Average daily projected loss: ")
-	st.write(round(adjusted_loss, 2))   
+	st.write(round(adjusted_loss, 2)) 
+	st.write("Well Done!")  
 
