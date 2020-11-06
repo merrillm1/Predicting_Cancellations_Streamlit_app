@@ -39,7 +39,7 @@ dStart = hotels.projected_arrival.min() # start of data
 dEnd = hotels.projected_arrival.max() # end of data
 raw_plot = func.timeseries_frequency_plot(
                          'Revenue vs Potential Loss', 
-                          hotels[hotels['is_canceled'] == 0],
+                          hotels,
                           hotels[hotels['is_canceled'] == 1],
                          'projected_arrival', 
                          'cost_of_stay', 
@@ -107,7 +107,7 @@ if st.checkbox('Show the impact on cancellations?'):
 
 filtered_plot = func.timeseries_frequency_plot(
                          'Revenue vs Potential Loss', 
-                          final[final['is_canceled'] == 0],
+                          final,
                           final[final['is_canceled'] == 1],
                          'projected_arrival', 
                          'cost_of_stay', 
