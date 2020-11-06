@@ -22,9 +22,19 @@ hotels = load_data(50000)
 # Notify the reader that the data was successfully loaded.
 data_load_state.text("Done! (using st.cache)")
 
+st.write('Hello! Thank you for checking out my streamlit app. The purpose of this tool is to explore the'
+' data from a project of mine, "Predicting Hotel Cancellations" which you can check out in the link'
+' below.')
+st.write('Your job is to lower the cancellation rate and potential revenue'
+' loss by adjusting parameters such as where customers are booking from, and how much lead time'
+' they had before their projected arrival. You can determine how successful your adjustments are '
+' by seeing the affect on percentage of cancellations and total potential loss.')
+
+[Project Link](https://github.com/merrillm1/Predicting_Hotel_Cancellations)
+
 st.write('The plots below represent cancellation rates for the raw data along with the '
-		  'comparison of revenue and potential loss. The potential loss represents the loss '
-		  'in daily actualized income if none of the canceled bookings were filled.')
+		  'comparison of expected revenue and potential loss. The potential loss represents the loss '
+		  'in actualized income if none of the canceled bookings are filled.')
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
