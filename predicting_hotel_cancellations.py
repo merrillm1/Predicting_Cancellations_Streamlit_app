@@ -18,7 +18,7 @@ def load_data(nrows):
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
 # Load 10,000 rows of data into the dataframe.
-hotels = load_data(50000)
+hotels = load_data(100000)
 # Notify the reader that the data was successfully loaded.
 data_load_state.text("Done! (using st.cache)")
 
@@ -34,10 +34,6 @@ st.write('Your job is to lower the cancellation rate and potential revenue'
 link = '[Project Link](https://github.com/merrillm1/Predicting_Hotel_Cancellations)'
 st.markdown(link, unsafe_allow_html=True)
 
-st.write('The plots below represent cancellation rates for the raw data along with the '
-		  'comparison of expected revenue and potential loss. The potential loss represents the loss '
-		  'in actualized income if none of the canceled bookings are filled.')
-
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(hotels)
@@ -50,7 +46,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 dStart = hotels.projected_arrival.min() # start of data
 dEnd = hotels.projected_arrival.max() # end of data
 raw_plot = func.timeseries_frequency_plot(
-                         'Revenue vs Potential Loss', 
+                         'Projected Revenue vs Potential Loss', 
                           hotels,
                           hotels[hotels['is_canceled'] == 1],
                          'projected_arrival', 
@@ -61,6 +57,10 @@ raw_plot = func.timeseries_frequency_plot(
                          '2M')
 
 st.pyplot(raw_plot)
+
+raw_loss = func.daily_loss(hotels)
+
+st.write("Average daily projected loss".format(round(raw_loss, 2))
 
 df_ota = hotels[hotels['market_segment'] == 'Online TA']
 df_direct = hotels[hotels['market_segment'] == 'Direct']
@@ -118,7 +118,7 @@ if st.checkbox('Show the impact on cancellations?'):
     st.pyplot(bar_plot_final)
 
 filtered_plot = func.timeseries_frequency_plot(
-                         'Revenue vs Potential Loss', 
+                         'Projected Revenue vs Potential Loss', 
                           final,
                           final[final['is_canceled'] == 1],
                          'projected_arrival', 
@@ -127,6 +127,10 @@ filtered_plot = func.timeseries_frequency_plot(
                          dEnd, 
                          'W', 
                          '2M')
+
+raw_loss = func.daily_loss(final)
+
+st.write("Average daily projected loss".format(round(raw_loss, 2))
 
 if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
