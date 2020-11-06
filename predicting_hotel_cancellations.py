@@ -30,7 +30,7 @@ st.write('Your job is to lower the cancellation rate and potential revenue'
 ' they had before their projected arrival. You can determine how successful your adjustments are '
 ' by seeing the affect on percentage of cancellations and total potential loss.')
 
-[Project Link](https://github.com/merrillm1/Predicting_Hotel_Cancellations)
+st.write([Project Link](https://github.com/merrillm1/Predicting_Hotel_Cancellations))
 
 st.write('The plots below represent cancellation rates for the raw data along with the '
 		  'comparison of expected revenue and potential loss. The potential loss represents the loss '
