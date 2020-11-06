@@ -60,7 +60,8 @@ st.pyplot(raw_plot)
 
 raw_loss = func.daily_loss(hotels)
 
-st.write(print("Average daily projected loss".format(round(raw_loss, 2))))
+st.write("Average daily projected loss: ")
+st.write(round(raw_loss, 2))
 
 df_ota = hotels[hotels['market_segment'] == 'Online TA']
 df_direct = hotels[hotels['market_segment'] == 'Direct']
@@ -130,7 +131,8 @@ filtered_plot = func.timeseries_frequency_plot(
 
 adjusted_loss = func.daily_loss(final)
 
-st.write(print("Average daily projected loss".format(round(adjusted_loss, 2))))
+st.write("Average daily projected loss: ")
+st.write(round(adjusted_loss, 2))
 
 if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
