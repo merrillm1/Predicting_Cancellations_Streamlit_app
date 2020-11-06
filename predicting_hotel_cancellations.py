@@ -131,10 +131,9 @@ filtered_plot = func.timeseries_frequency_plot(
 
 adjusted_loss = func.daily_loss(final)
 
-st.write("Average daily projected loss: ")
-st.write(round(adjusted_loss, 2))
-
 if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
-	st.pyplot(filtered_plot)   
+	st.pyplot(filtered_plot)
+	st.write("Average daily projected loss: ")
+	st.write(round(adjusted_loss, 2))   
 
