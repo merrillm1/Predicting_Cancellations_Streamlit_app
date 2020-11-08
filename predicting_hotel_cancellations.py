@@ -65,7 +65,7 @@ PCT_LOSS = 100*LOSS/(LOSS+REVENUE)
 
 st.write("{:.2f}% of projected daily income is lost due to cancellations in this scenario.".format(PCT_LOSS, 1))
 
-st.write("Average daily revenue, adjusting for cancellation loss: ${:.f}".format(raw_loss), 2)
+st.write("Average daily revenue, adjusting for cancellation loss: ${:.2f}".format(raw_loss), 2)
 
 
 df_ota = hotels[hotels['market_segment'] == 'Online TA']
