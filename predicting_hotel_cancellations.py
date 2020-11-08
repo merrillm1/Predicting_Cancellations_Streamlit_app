@@ -23,13 +23,13 @@ hotels = load_data(100000)
 # Notify the reader that the data was successfully loaded.
 data_load_state.text("Done! (using st.cache)")
 
-OTA_PCT_RAW = trunc(hotels.market_segment.value_counts(normalize=True)[0]*100)
-GROUPS_PCT_RAW = trunc(hotels.market_segment.value_counts(normalize=True)[2]*100)
-DIRECT_PCT_RAW = trunc(hotels.market_segment.value_counts(normalize=True)[3]*100)
-OTHER_PCT_RAW = trunc(hotels.market_segment.value_counts(normalize=True)[1]*100) + \
-                trunc(hotels.market_segment.value_counts(normalize=True)[4]*100) + \
-                trunc(hotels.market_segment.value_counts(normalize=True)[5]*100) + \
-                trunc(hotels.market_segment.value_counts(normalize=True)[6]*100)
+OTA_PCT_RAW = round(hotels.market_segment.value_counts(normalize=True)[0]*100, 0)
+GROUPS_PCT_RAW = round(hotels.market_segment.value_counts(normalize=True)[2]*100, 0)
+DIRECT_PCT_RAW = round(hotels.market_segment.value_counts(normalize=True)[3]*100, 0)
+OTHER_PCT_RAW = round(hotels.market_segment.value_counts(normalize=True)[1]*100, 0) + \
+                round(hotels.market_segment.value_counts(normalize=True)[4]*100, 0) + \
+                round(hotels.market_segment.value_counts(normalize=True)[5]*100, 0) + \
+                round(hotels.market_segment.value_counts(normalize=True)[6]*100, 0)
 
 st.write('Hello! Thank you for checking out my streamlit app. The purpose of this tool is to explore the'
 ' data from a project of mine, "Predicting Hotel Cancellations" which you can check out in the link'
@@ -101,11 +101,11 @@ st.sidebar.write('The default percent breakdown is approximately representative 
 		 ' wisely to lower the loss, good luck!')
 
 max_rows = 1000
-ota_pct = st.sidebar.slider('Percent of online travel agency bookings', 0, 100, OTA_PCT_RAW)
-direct_pct = st.sidebar.slider('Percent of direct dookings', 0, 100, DIRECT_PCT_RAW)
-group_pct = st.sidebar.slider('Percent of group bookings', 0, 100, GROUPS_PCT_RAW)
+ota_pct = st.sidebar.slider('Percent of online travel agency bookings', 0, 100, int(OTA_PCT_RAW))
+direct_pct = st.sidebar.slider('Percent of direct dookings', 0, 100, int(DIRECT_PCT_RAW))
+group_pct = st.sidebar.slider('Percent of group bookings', 0, 100, int(GROUPS_PCT_RAW))
 other_pct = st.sidebar.slider('Percent from other sources (corporate, complementary, offline OTA)'
-					  , 0, 100, OTHER_PCT_RAW)
+					  , 0, 100, int(OTHER_PCT_RAW))
 
 ota = df_ota.sample(int(ota_pct*max_rows), replace=True, random_state=3, axis=0)
 direct = df_direct.sample(int(direct_pct*max_rows), replace=True, random_state=3, axis=0)
