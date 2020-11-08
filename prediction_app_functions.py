@@ -74,3 +74,10 @@ def daily_loss(df):
     AVG_DAILY_LOSS = daily_losses.set_index('projected_arrival').resample('D')['cost_of_stay'].sum().mean()
     
     return AVG_DAILY_LOSS
+
+def daily_revenue(df):
+
+    daily_income = df[df['is_canceled'] == 0][['projected_arrival', 'cost_of_stay']]
+    AVG_DAILY_REVENUE= daily_income.set_index('projected_arrival').resample('D')['cost_of_stay'].sum().mean()
+    
+    return AVG_DAILY_REVENUE
