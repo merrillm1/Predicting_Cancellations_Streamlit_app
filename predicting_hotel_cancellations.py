@@ -60,7 +60,10 @@ st.pyplot(raw_plot)
 
 raw_loss = func.daily_loss(hotels)
 LOSS = hotels[hotels['is_canceled'] == 1]['cost_of_stay'].sum()
-st.write("{:.2f}% of projected daily income is lost due to cancellations in this scenario.".format(LOSS))
+REVENUE = hotels[hotels['is_canceled'] == 0]['cost_of_stay'].sum()
+PCT_LOSS = LOSS/(LOSS+REVENUE)
+
+st.write("{:.2f}% of projected daily income is lost due to cancellations in this scenario.".format(LOSS, 1))
 
 st.write("Average daily projected loss: ")
 st.write(round(raw_loss, 2))
