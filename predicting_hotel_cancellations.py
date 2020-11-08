@@ -77,12 +77,12 @@ st.write('Try re-distributing the customer market and lead-time range in the lef
 		' to lower the impact of cancellations. Once you make your selections, check '
 		' the boxes below to see the change.')
 		 
-st.write('Our prediction algorithm found that group bookings were the most risky with'
-		 ' online travel agency bookings coming in second. Direct bookings were reliable'
-		 ' source of bookings with only 15% of those bookings resulting in a cancellation'
-		 ', compared to 61% of group bookings!')
-st.sidebar.write('The default percent breakdown is representative of the original dataset, '
-		 'which cantained about 37% canceled bookings. Change the settings to see the '
+st.write('Our prediction algorithm found that group bookings were much more likely to cancel, with'
+		 ' online travel agency bookings coming in second. Conversely, customers who booked direct were a reliable'
+		 ' source of revenue with only 15% resulting in a cancellation'
+		 ', compared to a whopping 61% of group bookings.')
+st.sidebar.write('The default percent breakdown is approximately representative of the original dataset, '
+		 'which cantained about 40% canceled bookings. Change the settings to see the '
 		 'effect on revenue, potential loss and cancelation rate. Choose your combination'
 		 ' wisely to lower the loss, good luck!')
 

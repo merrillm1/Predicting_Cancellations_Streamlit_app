@@ -55,7 +55,7 @@ def cancellations_bar(title, df):
 	ax.barh(0, canceled_pct[:1], width, color='seagreen', label = 'not canceled')
 
 	# Add some text for labels, title and custom x-axis tick labels, etc.
-	# ax.set_xlabel('Percent of canceled/not canceled bookings')
+	ax.set_xlabel('%')
 	ax.set_title(title)
 	ax.set_yticks(x)
 	ax.set_yticklabels(x)
