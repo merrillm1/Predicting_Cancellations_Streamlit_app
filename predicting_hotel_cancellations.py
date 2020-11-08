@@ -10,7 +10,7 @@ st.title('Predicting Hotel Cancellations')
 DATE_COLUMN = 'projected_arrival'
 DATA_URL = ('https://raw.githubusercontent.com/merrillm1/Predicting_Hotel_Cancellations/'
 			'master/Jupyter_Notebooks/data/master_df.csv')
-@st.cache
+#@st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, index_col=0, nrows=nrows)
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
