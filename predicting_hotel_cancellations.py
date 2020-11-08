@@ -115,7 +115,7 @@ MIN_LEAD_TIME = st.sidebar.slider('Lead time Min', 0, 700, 0)
 result = master_df[(master_df['lead_time'] <= int(MAX_LEAD_TIME)) & \
 				  (master_df['lead_time'] >= int(MIN_LEAD_TIME))]\
 
-final = result.sample(50000, replace=True, random_state=3, axis=0).reset_index(drop=True)
+final = result.sample(100000, replace=True, random_state=3, axis=0).reset_index(drop=True)
 				  
 bar_plot_final = func.cancellations_bar('Impact on Cancellations', final)
 
