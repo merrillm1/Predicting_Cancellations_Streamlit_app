@@ -59,6 +59,8 @@ raw_plot = func.timeseries_frequency_plot(
 st.pyplot(raw_plot)
 
 raw_loss = func.daily_loss(hotels)
+LOSS = hotels[hotels['is_canceled'] == 1]['cost_of_stay'].sum()
+st.write("{:.2f}% of projected daily income is lost due to cancellations in this scenario.".format(LOSS))
 
 st.write("Average daily projected loss: ")
 st.write(round(raw_loss, 2))
