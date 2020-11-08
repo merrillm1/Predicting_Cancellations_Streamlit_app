@@ -29,7 +29,7 @@ def timeseries_frequency_plot(title, df, df2, timeseries_col, y_col, dStart, dEn
         ax.axvline(axv, color='r', linestyle='--', lw=2)
     
     ax.ticklabel_format(axis='y', style='plain')
-    ax.legend(['Revenue', 'Potential loss from cancellations'])
+    ax.legend(['Revenue', 'Potential loss'], fontsize=15, loc="upper right")
     ax.tick_params(axis='x', which='major', pad=15)
     plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
     
@@ -55,11 +55,11 @@ def cancellations_bar(title, df):
 	ax.barh(0, canceled_pct[:1], width, color='seagreen', label = 'not canceled')
 
 	# Add some text for labels, title and custom x-axis tick labels, etc.
-	ax.set_xlabel('Percent of canceled/not canceled bookings')
+	# ax.set_xlabel('Percent of canceled/not canceled bookings')
 	ax.set_title(title)
 	ax.set_yticks(x)
 	ax.set_yticklabels(x)
-	ax.legend(fontsize=12)
+	ax.legend(fontsize=15, loc="upper right")
 
 	for i, v in enumerate(y):
 		ax.text(v+0.5, i, str(v) + '%', color='blue', fontweight='bold', fontsize=12)

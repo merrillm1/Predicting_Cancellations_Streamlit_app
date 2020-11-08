@@ -54,7 +54,7 @@ raw_plot = func.timeseries_frequency_plot(
                          dStart,
                          dEnd, 
                          'W', 
-                         '2M')
+                         '4M')
 
 st.pyplot(raw_plot)
 
@@ -127,7 +127,7 @@ filtered_plot = func.timeseries_frequency_plot(
                          dStart,
                          dEnd, 
                          'W', 
-                         '2M')
+                         '4M')
 
 adjusted_loss = func.daily_loss(final)
 
