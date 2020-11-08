@@ -136,10 +136,14 @@ filtered_plot = func.timeseries_frequency_plot(
 
 adjusted_revenue = func.daily_revenue(final)
 
+LOSS = final[final['is_canceled'] == 1]['cost_of_stay'].sum()
+REVENUE = final[final['is_canceled'] == 0]['cost_of_stay'].sum()
+PCT_LOSS = 100*LOSS/(LOSS+REVENUE)
+
 if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
 	st.pyplot(filtered_plot)
-	st.write("Average daily projected loss: ")
-	st.write(round(adjusted_revenue, 2)) 
+	st.write("{:.2f}% of projected income is lost due to cancellations in this scenario.".format(PCT_LOSS, 1))
+	st.write("Average daily revenue, adjusting for cancellation loss: ${:.2f}".format(adjusted_revenue), 2)
 	st.write("Well Done!")  
 
