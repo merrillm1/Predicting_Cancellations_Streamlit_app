@@ -58,14 +58,14 @@ raw_plot = func.timeseries_frequency_plot(
 
 st.pyplot(raw_plot)
 
-raw_loss = func.daily_loss(hotels)
+raw_daily_income = func.daily_revenue(hotels)
 LOSS = hotels[hotels['is_canceled'] == 1]['cost_of_stay'].sum()
 REVENUE = hotels[hotels['is_canceled'] == 0]['cost_of_stay'].sum()
 PCT_LOSS = 100*LOSS/(LOSS+REVENUE)
 
-st.write("{:.2f}% of projected daily income is lost due to cancellations in this scenario.".format(PCT_LOSS, 1))
+st.write("{:.2f}% of projected income is lost due to cancellations in this scenario.".format(PCT_LOSS, 1))
 
-st.write("Average daily revenue, adjusting for cancellation loss: ${:.2f}".format(raw_loss), 2)
+st.write("Average daily revenue, adjusting for cancellation loss: ${:.2f}".format(raw_daily_income), 2)
 
 
 df_ota = hotels[hotels['market_segment'] == 'Online TA']
@@ -134,12 +134,12 @@ filtered_plot = func.timeseries_frequency_plot(
                          'W', 
                          '4M')
 
-adjusted_loss = func.daily_loss(final)
+adjusted_revenue = func.daily_revenue(final)
 
 if st.checkbox('Show the impact on revenue?'):
 	st.subheader('Based on your adjustments, here are the results:')
 	st.pyplot(filtered_plot)
 	st.write("Average daily projected loss: ")
-	st.write(round(adjusted_loss, 2)) 
+	st.write(round(adjusted_revenue, 2)) 
 	st.write("Well Done!")  
 

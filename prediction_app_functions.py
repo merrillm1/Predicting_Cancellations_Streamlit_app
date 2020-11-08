@@ -71,6 +71,6 @@ def cancellations_bar(title, df):
 def daily_loss(df):
 
     daily_losses = df[df['is_canceled'] == 1][['projected_arrival', 'cost_of_stay']]
-    AVG_DAILY_LOSS = -1*daily_losses.set_index('projected_arrival').resample('D')['cost_of_stay'].sum().mean()
+    AVG_DAILY_LOSS = daily_losses.set_index('projected_arrival').resample('D')['cost_of_stay'].sum().mean()
     
     return AVG_DAILY_LOSS
